@@ -4,14 +4,14 @@ export const dynamic = 'force-dynamic'
 
 
 export default async function HomePage() {
-    const posts = await db.query.posts.findMany()
+    const images = await db.query.images.findMany()
 
     return (
         <main className="">
             <div className="flex flex-wrap gap-3">
 
                 {
-                    [...posts, ...posts, ...posts].map((image, index) => (
+                    [...images, ...images, ...images].map((image, index) => (
                         <div key={image.id + '-' + index} className="w-48">
                             <img src={image.url} />
                             <div>{image.name}</div>
