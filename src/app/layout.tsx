@@ -1,9 +1,9 @@
+import React from 'react'
 import '~/styles/globals.css'
+import "@uploadthing/react/styles.css"
 import { ClerkProvider } from '@clerk/nextjs'
 import { GeistSans } from 'geist/font/sans'
 import TopNav from '~/components/topnav'
-import React from 'react'
-
 
 export const metadata = {
     title: 'Salary Gallery',
@@ -17,7 +17,8 @@ export default function RootLayout({ children }: {
 }) {
     return (
         <ClerkProvider>
-            <html lang="en" className={`${GeistSans.variable} flex flex-col gap-4 bg-[url('/background.avif')]`}>
+            {/*<html lang="en" className={`${GeistSans.variable} flex flex-col gap-4 bg-[url('/background.avif')]`}>*/}
+            <html lang="en" className={`${GeistSans.variable} flex flex-col gap-4`}>
             <body>
             <TopNav />
             {children}

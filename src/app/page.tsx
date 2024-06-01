@@ -27,7 +27,7 @@ export default async function HomePage() {
     return (
         <main className="">
             <SignedOut>
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4 bg-transparent">
                     <h1 className="text-4xl text-center text-cyan-200">Welcome to Salary Gallery</h1>
                     <p className="text-1xl text-center text-cyan-200">Sign in to view images</p>
                 </div>
