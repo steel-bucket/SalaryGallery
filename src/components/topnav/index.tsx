@@ -18,7 +18,7 @@ function TopNav() {
                         onClientUploadComplete={() => {
                             router.refresh()
                         }}
-                        className="m-auto"
+                        className="mx-auto"
                     />
                     <UserButton />
                 </SignedIn>
