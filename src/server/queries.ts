@@ -13,3 +13,17 @@ export async function getMyImages() {
         orderBy: (model, { desc }) => desc(model.id),
     })
 }
+
+export async function getMyImage(id: number) {
+    const user = auth()
+    if (!user.userId) {
+        throw new Error('User not found')
+    }
+    const image = await db.query.images.findFirst({
+        where: (model, { eq }) => eq(model.id, id),
+    })
+    if (!image || image.userId !== user.userId) {
+        throw new Error('Image not found')
+    }
+    return image
+}

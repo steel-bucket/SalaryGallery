@@ -44,3 +44,6 @@ yarn-error.log*
 .env
 
 package.json
+# Sentry Config File
+.env.sentry-build-plugin
+/src/app/(.)img/[id]/modal.tsx
