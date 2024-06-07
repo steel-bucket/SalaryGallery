@@ -1,0 +1,364 @@
+diff --git a/package.json b/package.json
+index ff7231a..92e0f2f 100755
+--- a/package.json
++++ b/package.json
+@@ -16,13 +16,18 @@
+     "@sentry/nextjs": "^8",
+     "@t3-oss/env-nextjs": "^0.10.1",
+     "@uploadthing/react": "^6.6.0",
++    "class-variance-authority": "^0.7.0",
++    "clsx": "^2.1.1",
+     "drizzle-orm": "^0.29.4",
+     "geist": "^1.3.0",
++    "lucide-react": "^0.390.0",
+     "next": "^14.2.1",
+     "postgres": "^3.4.3",
+     "react": "18.2.0",
+     "react-dom": "18.2.0",
+     "server-only": "^0.0.1",
++    "tailwind-merge": "^2.3.0",
++    "tailwindcss-animate": "^1.0.7",
+     "uploadthing": "^6.12.0",
+     "zod": "^3.23.3"
+   },
+diff --git a/pnpm-lock.yaml b/pnpm-lock.yaml
+index 7ce18a4..4253e34 100755
+--- a/pnpm-lock.yaml
++++ b/pnpm-lock.yaml
+@@ -20,12 +20,21 @@ importers:
+       '@uploadthing/react':
+         specifier: ^6.6.0
+         version: 6.6.0(next@14.2.3(@babel/core@7.24.6)(@opentelemetry/api@1.8.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)(uploadthing@6.12.0(next@14.2.3(@babel/core@7.24.6)(@opentelemetry/api@1.8.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(tailwindcss@3.4.3))
++      class-variance-authority:
++        specifier: ^0.7.0
++        version: 0.7.0
++      clsx:
++        specifier: ^2.1.1
++        version: 2.1.1
+       drizzle-orm:
+         specifier: ^0.29.4
+         version: 0.29.5(@opentelemetry/api@1.8.0)(@types/pg@8.6.1)(@types/react@18.3.2)(pg@8.11.5)(postgres@3.4.4)(react@18.2.0)
+       geist:
+         specifier: ^1.3.0
+         version: 1.3.0(next@14.2.3(@babel/core@7.24.6)(@opentelemetry/api@1.8.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
++      lucide-react:
++        specifier: ^0.390.0
++        version: 0.390.0(react@18.2.0)
+       next:
+         specifier: ^14.2.1
+         version: 14.2.3(@babel/core@7.24.6)(@opentelemetry/api@1.8.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+@@ -41,6 +50,12 @@ importers:
+       server-only:
+         specifier: ^0.0.1
+         version: 0.0.1
++      tailwind-merge:
++        specifier: ^2.3.0
++        version: 2.3.0
++      tailwindcss-animate:
++        specifier: ^1.0.7
++        version: 1.0.7(tailwindcss@3.4.3)
+       uploadthing:
+         specifier: ^6.12.0
+         version: 6.12.0(next@14.2.3(@babel/core@7.24.6)(@opentelemetry/api@1.8.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(tailwindcss@3.4.3)
+@@ -1464,6 +1479,9 @@ packages:
+   cjs-module-lexer@1.3.1:
+     resolution: {integrity: sha512-a3KdPAANPbNE4ZUv9h6LckSl9zLsYOP4MBmhIPkRaeyybt+r4UghLvq+xw/YwUcC1gqylCkL4rdVs3Lwupjm4Q==}
+ 
++  class-variance-authority@0.7.0:
++    resolution: {integrity: sha512-jFI8IQw4hczaL4ALINxqLEXQbWcNjoSkloa4IaufXCJr6QawJyw7tuRysRsrE8w2p/4gGaxKIt/hX3qz/IbD1A==}
++
+   cli-color@2.0.4:
+     resolution: {integrity: sha512-zlnpg0jNcibNrO7GG9IeHH7maWFeCz+Ja1wx/7tZNU5ASSSSZ+/qZciM0/LHCYxSdqv5h2sdbQ/PXYdOuetXvA==}
+     engines: {node: '>=0.10'}
+@@ -1471,6 +1489,14 @@ packages:
+   client-only@0.0.1:
+     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
+ 
++  clsx@2.0.0:
++    resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
++    engines: {node: '>=6'}
++
++  clsx@2.1.1:
++    resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
++    engines: {node: '>=6'}
++
+   color-convert@1.9.3:
+     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
+ 
+@@ -2404,6 +2430,11 @@ packages:
+   lru-queue@0.1.0:
+     resolution: {integrity: sha512-BpdYkt9EvGl8OfWHDQPISVpcl5xZthb+XPsbELj5AQXxIC8IriDZIQYjBJPEm5rS420sjZ0TLEzRcq5KdBhYrQ==}
+ 
++  lucide-react@0.390.0:
++    resolution: {integrity: sha512-APqbfEcVuHnZbiy3E97gYWLeBdkE4e6NbY6AuVETZDZVn/bQCHYUoHyxcUHyvRopfPOHhFUEvDyyQzHwM+S9/w==}
++    peerDependencies:
++      react: ^16.5.1 || ^17.0.0 || ^18.0.0
++
+   magic-string@0.27.0:
+     resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}
+     engines: {node: '>=12'}
+@@ -3066,6 +3097,11 @@ packages:
+   tailwind-merge@2.3.0:
+     resolution: {integrity: sha512-vkYrLpIP+lgR0tQCG6AP7zZXCTLc1Lnv/CCRT3BqJ9CZ3ui2++GPaGb1x/ILsINIMSYqqvrpqjUFsMNLlW99EA==}
+ 
++  tailwindcss-animate@1.0.7:
++    resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
++    peerDependencies:
++      tailwindcss: '>=3.0.0 || insiders'
++
+   tailwindcss@3.4.3:
+     resolution: {integrity: sha512-U7sxQk/n397Bmx4JHbJx/iSOOv5G+II3f1kpLpY2QeUv5DcPdcTsYLlusZfq1NthHS1c1cZoyFmmkex1rzke0A==}
+     engines: {node: '>=14.0.0'}
+@@ -4856,6 +4892,10 @@ snapshots:
+ 
+   cjs-module-lexer@1.3.1: {}
+ 
++  class-variance-authority@0.7.0:
++    dependencies:
++      clsx: 2.0.0
++
+   cli-color@2.0.4:
+     dependencies:
+       d: 1.0.2
+@@ -4866,6 +4906,10 @@ snapshots:
+ 
+   client-only@0.0.1: {}
+ 
++  clsx@2.0.0: {}
++
++  clsx@2.1.1: {}
++
+   color-convert@1.9.3:
+     dependencies:
+       color-name: 1.1.3
+@@ -6013,6 +6057,10 @@ snapshots:
+     dependencies:
+       es5-ext: 0.10.64
+ 
++  lucide-react@0.390.0(react@18.2.0):
++    dependencies:
++      react: 18.2.0
++
+   magic-string@0.27.0:
+     dependencies:
+       '@jridgewell/sourcemap-codec': 1.4.15
+@@ -6634,6 +6682,10 @@ snapshots:
+     dependencies:
+       '@babel/runtime': 7.24.5
+ 
++  tailwindcss-animate@1.0.7(tailwindcss@3.4.3):
++    dependencies:
++      tailwindcss: 3.4.3
++
+   tailwindcss@3.4.3:
+     dependencies:
+       '@alloc/quick-lru': 5.2.0
+diff --git a/src/styles/globals.css b/src/styles/globals.css
+index bd1a8d4..916a232 100755
+--- a/src/styles/globals.css
++++ b/src/styles/globals.css
+@@ -1,12 +1,76 @@
+ @tailwind base;
+-@tailwind components;
+-@tailwind utilities;
++  @tailwind components;
++  @tailwind utilities;
+ 
++  @layer base {
++    :root {
++      --background: 0 0% 100%;
++      --foreground: 240 10% 3.9%;
+ 
+-body {
+-    @apply bg-black text-white;
+-}
+-dialog{
+-    max-width: 100vw;
+-    max-height: 100vh;
+-}
+\ No newline at end of file
++      --card: 0 0% 100%;
++      --card-foreground: 240 10% 3.9%;
++
++      --popover: 0 0% 100%;
++      --popover-foreground: 240 10% 3.9%;
++
++      --primary: 240 5.9% 10%;
++      --primary-foreground: 0 0% 98%;
++
++      --secondary: 240 4.8% 95.9%;
++      --secondary-foreground: 240 5.9% 10%;
++
++      --muted: 240 4.8% 95.9%;
++      --muted-foreground: 240 3.8% 46.1%;
++
++      --accent: 240 4.8% 95.9%;
++      --accent-foreground: 240 5.9% 10%;
++
++      --destructive: 0 84.2% 60.2%;
++      --destructive-foreground: 0 0% 98%;
++
++      --border: 240 5.9% 90%;
++      --input: 240 5.9% 90%;
++      --ring: 240 10% 3.9%;
++
++      --radius: 0.5rem;
++    }
++
++    .dark {
++      --background: 240 10% 3.9%;
++      --foreground: 0 0% 98%;
++
++      --card: 240 10% 3.9%;
++      --card-foreground: 0 0% 98%;
++
++      --popover: 240 10% 3.9%;
++      --popover-foreground: 0 0% 98%;
++
++      --primary: 0 0% 98%;
++      --primary-foreground: 240 5.9% 10%;
++
++      --secondary: 240 3.7% 15.9%;
++      --secondary-foreground: 0 0% 98%;
++
++      --muted: 240 3.7% 15.9%;
++      --muted-foreground: 240 5% 64.9%;
++
++      --accent: 240 3.7% 15.9%;
++      --accent-foreground: 0 0% 98%;
++
++      --destructive: 0 62.8% 30.6%;
++      --destructive-foreground: 0 0% 98%;
++
++      --border: 240 3.7% 15.9%;
++      --input: 240 3.7% 15.9%;
++      --ring: 240 4.9% 83.9%;
++    }
++  }
++
++  @layer base {
++    * {
++      @apply border-border;
++    }
++    body {
++      @apply bg-background text-foreground;
++    }
++  }
+\ No newline at end of file
+diff --git a/src/utils/uploadthing.ts b/src/utils/uploadthing.ts
+index 56fa17a..554bbef 100644
+--- a/src/utils/uploadthing.ts
++++ b/src/utils/uploadthing.ts
+@@ -1,9 +1,11 @@
+ import {
++    generateReactHelpers,
+     generateUploadButton,
+     generateUploadDropzone,
+-} from "@uploadthing/react";
++} from '@uploadthing/react'
+ 
+-import type { OurFileRouter } from "~/app/api/uploadthing/core";
++import type { OurFileRouter } from '~/app/api/uploadthing/core'
+ 
+ export const UploadButton = generateUploadButton<OurFileRouter>();
+-export const UploadDropzone = generateUploadDropzone<OurFileRouter>();
+\ No newline at end of file
++export const UploadDropzone = generateUploadDropzone<OurFileRouter>();
++
+diff --git a/tailwind.config.ts b/tailwind.config.ts
+index bd4ec58..84287e8 100755
+--- a/tailwind.config.ts
++++ b/tailwind.config.ts
+@@ -1,15 +1,80 @@
+-import { type Config } from 'tailwindcss'
+-import { fontFamily } from 'tailwindcss/defaultTheme'
+-
+-export default {
+-    content: ['./src/**/*.tsx'],
+-    theme: {
+-        extend: {
+-            fontFamily: {
+-                sans: ['var(--font-geist-sans)', ...fontFamily.sans],
+-            },
++import type { Config } from "tailwindcss"
+ 
++const config = {
++  darkMode: ["class"],
++  content: [
++    './pages/**/*.{ts,tsx}',
++    './components/**/*.{ts,tsx}',
++    './app/**/*.{ts,tsx}',
++    './src/**/*.{ts,tsx}',
++	],
++  prefix: "",
++  theme: {
++    container: {
++      center: true,
++      padding: "2rem",
++      screens: {
++        "2xl": "1400px",
++      },
++    },
++    extend: {
++      colors: {
++        border: "hsl(var(--border))",
++        input: "hsl(var(--input))",
++        ring: "hsl(var(--ring))",
++        background: "hsl(var(--background))",
++        foreground: "hsl(var(--foreground))",
++        primary: {
++          DEFAULT: "hsl(var(--primary))",
++          foreground: "hsl(var(--primary-foreground))",
++        },
++        secondary: {
++          DEFAULT: "hsl(var(--secondary))",
++          foreground: "hsl(var(--secondary-foreground))",
++        },
++        destructive: {
++          DEFAULT: "hsl(var(--destructive))",
++          foreground: "hsl(var(--destructive-foreground))",
++        },
++        muted: {
++          DEFAULT: "hsl(var(--muted))",
++          foreground: "hsl(var(--muted-foreground))",
++        },
++        accent: {
++          DEFAULT: "hsl(var(--accent))",
++          foreground: "hsl(var(--accent-foreground))",
+         },
++        popover: {
++          DEFAULT: "hsl(var(--popover))",
++          foreground: "hsl(var(--popover-foreground))",
++        },
++        card: {
++          DEFAULT: "hsl(var(--card))",
++          foreground: "hsl(var(--card-foreground))",
++        },
++      },
++      borderRadius: {
++        lg: "var(--radius)",
++        md: "calc(var(--radius) - 2px)",
++        sm: "calc(var(--radius) - 4px)",
++      },
++      keyframes: {
++        "accordion-down": {
++          from: { height: "0" },
++          to: { height: "var(--radix-accordion-content-height)" },
++        },
++        "accordion-up": {
++          from: { height: "var(--radix-accordion-content-height)" },
++          to: { height: "0" },
++        },
++      },
++      animation: {
++        "accordion-down": "accordion-down 0.2s ease-out",
++        "accordion-up": "accordion-up 0.2s ease-out",
++      },
+     },
+-    plugins: [],
++  },
++  plugins: [require("tailwindcss-animate")],
+ } satisfies Config
++
++export default config
+\ No newline at end of file

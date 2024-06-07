@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic'
 async function Images() {
     const images = await getMyImages()
     return (
-        <div className="flex flex-wrap gap-3 p-4">
+        <div className="flex flex-wrap gap-3 p-4 justify-center">
             {[
                 ...images,
                 ...images,
