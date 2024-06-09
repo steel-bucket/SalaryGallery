@@ -1,6 +1,3 @@
-// Example model schema from the Drizzle docs
-// https://orm.drizzle.team/docs/sql-schema-declaration
-
 import { sql } from 'drizzle-orm'
 import {
     index,
@@ -32,5 +29,5 @@ export const images = createTable(
     },
     (example) => ({
         nameIndex: index('name_idx').on(example.name),
-    }),
+    })
 )
