@@ -23,24 +23,26 @@ export default function RootLayout({
 }) {
     return (
         <ClerkProvider>
-            {/*<html lang="en" className={`${GeistSans.variable} flex flex-col gap-4 bg-[url('/background.avif')]`}>*/}
-            <html
-                lang="en"
-                className={`${GeistSans.variable} flex flex-col gap-4 dark`}
-            >
-                <NextSSRPlugin
-                    routerConfig={extractRouterConfig(ourFileRouter)}
-                />
+                {/*<html lang="en" className={`${GeistSans.variable} flex flex-col gap-4 bg-[url('/background.avif')]`}>*/}
+                <html
+                    lang="en"
+                    className={`${GeistSans.variable} flex flex-col gap-4 dark`}
+                >
+                    <NextSSRPlugin
+                        routerConfig={extractRouterConfig(ourFileRouter)}
+                    />
 
-                <body>
-                    <div className="h-screen grid grid-rows-[auto,1fr]">
-                        <TopNav />
-                        <main className="overflow-y-scroll">{children}</main>
-                    </div>
-                    {modal}
-                    <div id="modal-root" />
-                </body>
-            </html>
+                    <body>
+                        <div className="h-screen grid grid-rows-[auto,1fr]">
+                            <TopNav />
+                            <main className="overflow-y-scroll">
+                                {children}
+                            </main>
+                        </div>
+                        {modal}
+                        <div id="modal-root" />
+                    </body>
+                </html>
         </ClerkProvider>
     )
 }
