@@ -42,13 +42,13 @@ async function Images() {
 
 export default async function HomePage() {
     return (
-        <main className="">
+        <main className="h-full">
             <SignedOut>
-                <div className="flex flex-col gap-4 bg-transparent">
-                    <h1 className="text-4xl text-center text-cyan-200">
+                <div className="flex flex-col gap-4 bg-transparent h-full my-auto">
+                    <h1 className="text-4xl text-center text-grey-200 dark:text-gray-300 pt-80">
                         Welcome to Salary Gallery
                     </h1>
-                    <p className="text-1xl text-center text-cyan-200">
+                    <p className="text-1xl text-center text-grey-200 dark:text-gray-300">
                         Sign in to view images
                     </p>
                 </div>

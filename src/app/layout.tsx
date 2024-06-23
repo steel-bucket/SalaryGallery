@@ -7,6 +7,7 @@ import TopNav from '~/_components/topnav'
 import { NextSSRPlugin } from '@uploadthing/react/next-ssr-plugin'
 import { extractRouterConfig } from 'uploadthing/server'
 import { ourFileRouter } from '~/app/api/uploadthing/core'
+import { ThemeProvider } from '~/_components/ThemeProvider/ThemeProvider'
 
 export const metadata = {
     title: 'Salary Gallery',
@@ -23,16 +24,22 @@ export default function RootLayout({
 }) {
     return (
         <ClerkProvider>
-                {/*<html lang="en" className={`${GeistSans.variable} flex flex-col gap-4 bg-[url('/background.avif')]`}>*/}
-                <html
-                    lang="en"
-                    className={`${GeistSans.variable} flex flex-col gap-4 dark`}
-                >
-                    <NextSSRPlugin
-                        routerConfig={extractRouterConfig(ourFileRouter)}
-                    />
+            {/*<html lang="en" className={`${GeistSans.variable} flex flex-col gap-4 bg-[url('/background.avif')]`}>*/}
+            <html
+                lang="en"
+                className={`${GeistSans.variable} flex flex-col gap-4`}
+            >
+                <NextSSRPlugin
+                    routerConfig={extractRouterConfig(ourFileRouter)}
+                />
 
-                    <body>
+                <body>
+                    <ThemeProvider
+                        attribute="class"
+                        defaultTheme="system"
+                        enableSystem
+                        disableTransitionOnChange
+                    >
                         <div className="h-screen grid grid-rows-[auto,1fr]">
                             <TopNav />
                             <main className="overflow-y-scroll">
@@ -41,8 +48,9 @@ export default function RootLayout({
                         </div>
                         {modal}
                         <div id="modal-root" />
-                    </body>
-                </html>
+                    </ThemeProvider>
+                </body>
+            </html>
         </ClerkProvider>
     )
 }

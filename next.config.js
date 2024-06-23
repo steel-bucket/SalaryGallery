@@ -15,6 +15,10 @@ const coreConfig = {
     eslint: {
         ignoreDuringBuilds: true,
     },
+    compiler: {
+        styledComponents: true
+    },
+
 
     async rewrites() {
         return [
@@ -43,6 +47,7 @@ const config = withSentryConfig(
         org: "t3gg",
         project: "t3-gallery-video",
     },
+    // @ts-ignore
     {
         // For all available options, see:
         // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
@@ -70,6 +75,7 @@ const config = withSentryConfig(
         // https://vercel.com/docs/cron-jobs
         automaticVercelMonitors: true,
     },
+
 );
 
 export default config;
